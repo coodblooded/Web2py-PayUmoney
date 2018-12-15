@@ -1,0 +1,12 @@
+{{extend 'layout.html'}}
+<html>
+<body>
+<div style="margin-top: 80px;">
+	<a href="http://127.0.0.1/{{=request.application}}/{{=request.controller}}/" class="btn btn-primary" >Home</a>
+   	<input type="hidden" name="csrfmiddlewaretoken" value="{{=c}}">
+</div>
+<h2>transaction failed</h2>
+<p>Thank You. Your order status is , {{=status}}</p>
+<p>Your Transaction ID for this transaction is ,{{=txnid}}</p>
+</body>
+</html>

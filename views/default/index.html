@@ -1,0 +1,115 @@
+{{include 'layout.html'}}
+
+<!DOCTYPE html>
+<html>
+  <head onload="submitPayuForm()">
+  <script type="text/javascript">
+    var hash = "{{=hashh}}";
+    function submitPayuForm() {
+      if(hash =='') {
+        return;
+      }
+      var payuForm = document.forms.payuForm;
+      payuForm.submit();
+    }
+  </script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
+<body >
+<div class="container-fluid" style="margin-top: 60px;">    
+  <div class="row content">
+    <div class="col-sm-2 sidenav card" style="height: 200px;">
+      <p><a href="#" style="color: #fc5223">Dashboard</a></p>
+      <p><a href="#" >Bill</a></p>
+      <p><a href="#">Payment History</a></p>
+      
+    </div>
+    <div class="col-sm-9 text-center" style="margin-left: 10px;"> 
+      <h1>Welcome</h1>
+      <p>This is a you pament Deshboard Page</p>
+      <hr>
+     <div class="row">
+        <div style="margin-left: 300px;">
+  <div class="card">
+    <div class="card-header" style="background-color: #308fbf;color:white">
+      <h1>3 Month</h1>
+    </div>
+    <div class="card-body" style="text-align: left;;padding-left: 10px;margin-top: 20px;margin-bottom: 20px;">
+<div class="card" style="margin-left: 10%;margin-right: 10%">
+  
+
+
+      <p style="padding-left: 10px;"><i class=" fa fa-check-circle-o" style="color: blue"></i> <strong>100</strong> Meassge</p>
+          <p style="padding-left: 10px;"><i class=" fa fa-check-circle-o" style="color: blue"></i> <strong>50</strong> SMS</p>
+          <p style="padding-left: 10px;"><i class=" fa fa-check-circle-o" style="color: blue"> </i> <strong>25</strong> Unlimited Data Storage</p>
+          <p style="padding-left: 10px;"><i class=" fa fa-check-circle-o" style="color: blue"> </i> <strong>Endless</strong> Umlimited Data Downloading</p>
+ </div>
+    </div> 
+    <div class="card-footer">
+       <form action="{{=action}}" method="post" name="payuForm" enctype="multipart/form-data" id="1200p">
+      <input type="hidden" name="key" value="{{=MERCHANT_KEY}}" />
+      <input type="hidden" name="hash_string" value="{{=hash_string}}"/>
+      <input type="hidden" name="hash" value="{{=hashh}}"/>
+      <input type="hidden" name="posted" value="{{=posted}}"/>
+      <input type="hidden" name="txnid" value="{{=txnid}}"" />
+       <table>
+        <tr>
+          <td><input type="hidden" name="amount" default='' value="1200.0" /></td>
+          <td><input type="hidden" name="firstname" id="firstname" value="Sandeep Patel" /></td>
+        </tr>
+        <tr>
+          <td><input type="hidden" name="email" id="email" value = "Patelsandeep126@gmail.com"/></td>
+          <td><input type="hidden" name="phone" value="7580979169" /></td>
+        </tr>
+        <tr>
+          <td colspan="3"><input type="hidden" name="productinfo" value = 'payment'></input></td>
+        </tr>
+        <tr>
+          <td colspan="3"><input type="hidden" name="surl" value="http://127.0.0.1/{{=request.application}}/{{=request.controller}}/success.html" size="64" /></td>
+        </tr>
+        <tr>
+          <td colspan="3"><input type="hidden" name="furl" value="http://127.0.0.1/{{=request.application}}/{{=request.controller}}/failure.html" size="64" /></td>
+        </tr>
+
+        <tr>
+          <td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" size="64" /></td>
+        </tr>
+
+      </table>
+ </form>
+            <h5><i class="fa fa-inr"></i> 1200 Only</h5>
+          {{if session.ckhvar == True:}}
+          <button class="btn btn-lg" style="background-color: #308fbf;color:white" id="1200" disabled>Pay Now</button>
+          {{else:}}
+          <button class="btn btn-lg" style="background-color: #308fbf;color:white" id="1200" >Pay Now</button>
+          {{pass}}
+    </div>
+  </div>
+      </div>
+    </div>
+  
+  </div>
+</div>    
+
+<script>
+$("#1200").click(function() {
+  // alert("this")
+  $("#1200p").submit();
+});
+$("#500").click(function() {
+  // alert("this")
+  $("#500p").submit();
+});
+</script>
+
+<script>
+  $('a').click(function (){
+    // $('a').css('color','#679bef')
+    $(this).css('color','#fc5223');
+    
+  });
+</script>
+
+</body>
+</html>
