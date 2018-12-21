@@ -58,17 +58,21 @@ import datetime
 import hashlib
 from random import randint
 
-
 def index():
-    MERCHANT_KEY = "xxxxx"
-    key="xxxx"
-    SALT = "xxxxxx"
+    MERCHANT_KEY = "xxxxxx"
+    key="xxxxxx"
+    SALT = "********"
     PAYU_BASE_URL = "https://secure.payu.in/_payment"
     action = ''
     posted = {}
-    if request.vars:
-        print(request.post_vars)
-
+    posted['email'] = 'patelsandeep126@gmail.com'
+    posted['firstname'] = 'Sandeep Patel'
+    posted['productinfo'] = 'payment'
+    posted['amount'] = '1200.0'
+    posted['furl'] = 'http://{}/{}/{}/failure.html'.format(request.env.http_host,request.application,request.controller)
+    posted['surl'] = 'http://{}{}/{}/success.html'.format(request.env.http_host,request.application,request.controller)
+    posted['service_provider'] = 'payu_paisa'
+    posted['phone'] = '7580979169'
     for i in request.post_vars:
         posted[i]=request.vars[i]
     hash_object = hashlib.sha256(b'randint(0,20)')
@@ -86,7 +90,10 @@ def index():
             hash_string+=''
         hash_string+='|'
     hash_string+=SALT
+    posted['hash_string'] = hash_string
     hashh=hashlib.sha512(hash_string.encode('utf-8')).hexdigest().lower()
+    posted['hash'] = hashh
+    posted['posted'] = str({'txnid' : txnid,'key':key})
     action =PAYU_BASE_URL
     if(posted.get("key")!=None and posted.get("txnid")!=None and posted.get("productinfo")!=None and posted.get("firstname")!=None and posted.get("email")!=None):
         return dict(posted = posted,hashh=hashh,MERCHANT_KEY=MERCHANT_KEY,txnid=txnid,hash_string=hash_string,action="https://secure.payu.in/_payment")
