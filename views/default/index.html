@@ -55,25 +55,25 @@
       <input type="hidden" name="txnid" value="{{=txnid}}"" />
        <table>
         <tr>
-          <td><input type="hidden" name="amount" default='' value="1200.0" /></td>
-          <td><input type="hidden" name="firstname" id="firstname" value="Sandeep Patel" /></td>
+          <td><input type="hidden" name="amount" default='' value="{{=posted['amount']}}"/></td>
+          <td><input type="hidden" name="firstname" id="firstname" value="{{=posted['firstname']}}" /></td>
         </tr>
         <tr>
-          <td><input type="hidden" name="email" id="email" value = "Patelsandeep126@gmail.com"/></td>
-          <td><input type="hidden" name="phone" value="7580979169" /></td>
+          <td><input type="hidden" name="email" id="email" value = "{{=posted['email']}}"/></td>
+          <td><input type="hidden" name="phone" value="{{=posted['phone']}}"/></td>
         </tr>
         <tr>
-          <td colspan="3"><input type="hidden" name="productinfo" value = 'payment'></input></td>
+          <td colspan="3"><input type="hidden" name="productinfo" value = "{{=posted['productinfo']}}"></input></td>
         </tr>
         <tr>
-          <td colspan="3"><input type="hidden" name="surl" value="http://127.0.0.1/{{=request.application}}/{{=request.controller}}/success.html" size="64" /></td>
+          <td colspan="3"><input type="hidden" name="surl" value= "{{=posted['surl']}}"size="64" /></td>
         </tr>
         <tr>
-          <td colspan="3"><input type="hidden" name="furl" value="http://127.0.0.1/{{=request.application}}/{{=request.controller}}/failure.html" size="64" /></td>
+          <td colspan="3"><input type="hidden" name="furl" value="{{=posted['furl']}}" size="64" /></td>
         </tr>
 
         <tr>
-          <td colspan="3"><input type="hidden" name="service_provider" value="payu_paisa" size="64" /></td>
+          <td colspan="3"><input type="hidden" name="service_provider" value="{{=posted['service_provider']}}" size="64" /></td>
         </tr>
 
       </table>
